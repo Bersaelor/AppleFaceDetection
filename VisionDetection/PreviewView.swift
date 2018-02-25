@@ -16,14 +16,15 @@ class PreviewView: UIView {
     
     // MARK: AV capture properties
     var videoPreviewLayer: AVCaptureVideoPreviewLayer {
-        return layer as! AVCaptureVideoPreviewLayer
+        let videoLayer = layer as! AVCaptureVideoPreviewLayer
+        videoLayer.videoGravity = .resizeAspectFill
+        return videoLayer
     }
     
     var session: AVCaptureSession? {
         get {
             return videoPreviewLayer.session
         }
-        
         set {
             videoPreviewLayer.session = newValue
         }
